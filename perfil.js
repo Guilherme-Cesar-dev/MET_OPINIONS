@@ -57,7 +57,7 @@ document.getElementById('edit-perfil').onsubmit = function(e) {
     const foto = document.getElementById('input-foto').value.trim();
 
     if (!nome) {
-        alert('Por favor, digite seu nome!');
+        showToast('Por favor, digite seu nome!', 'error');
         return;
     }
 
@@ -68,7 +68,10 @@ document.getElementById('edit-perfil').onsubmit = function(e) {
     Object.assign(user, userData);
     atualizarVisualizacao();
     
-    alert('Perfil salvo com sucesso!');
+    showToast('Perfil salvo com sucesso!', 'success');
+    // fechar modal se existir
+    const modalEl = document.getElementById('modal-edit');
+    if (modalEl) modalEl.style.display = 'none';
 };
 
 // Lista favoritos

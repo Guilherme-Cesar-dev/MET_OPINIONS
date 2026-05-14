@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="letter-m.png" type="image/x-icon">
     <title>MET Avaliar - Obras de Arte</title>
 </head>
 <body>
@@ -12,7 +13,10 @@
         <h4>Avalie obras de arte!</h4>
         <a href="perfil.html" class="btn-perfil" id="user-link">Carregando...</a>
     </header>
-    
+    <!-- global UI elements -->
+    <div id="toast-container" aria-hidden="true"></div>
+    <div id="loading-spinner" class="loading-spinner" style="display:none;"><div class="spinner"></div></div>
+
     <div class="container-main">
         <div class="gallery">
             <div id="left" class="artwork-display"></div>
@@ -31,6 +35,8 @@
         const user = JSON.parse(localStorage.getItem('user_perfil')) || { nome: 'Meu Perfil' };
         document.getElementById('user-link').textContent = (user.nome || 'Meu Perfil');
     </script>
+
+    <script src="ui.js"></script>
 
     <script src="teste.js"></script>
 </body>

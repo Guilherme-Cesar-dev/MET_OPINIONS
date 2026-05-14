@@ -47,6 +47,31 @@
         cursor: pointer;
     }
 
+    /* Toast (perfil) */
+    #toast-container {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .toast {
+        background: rgba(0,0,0,0.85);
+        color: white;
+        padding: 10px 14px;
+        border-radius: 8px;
+        min-width: 160px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        transform-origin: right top;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .toast-hide { opacity: 0; transform: translateX(20px); }
+    .toast-success { background: linear-gradient(90deg,#28a745,#198754); }
+    .toast-error { background: linear-gradient(90deg,#dc3545,#b02a37); }
+    .toast-info { background: linear-gradient(90deg,#e4002b,#b80021); }
+
     /*Perfil */
 
     .profile-view {

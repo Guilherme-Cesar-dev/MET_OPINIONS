@@ -16,6 +16,7 @@ async function salvarIP() {
 salvarIP();
 
 async function searchOBJ(maxTentativas = 10) {
+    showLoading(true);
   const listUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects`;
   try {
     const listaRes = await fetch(listUrl);
@@ -32,13 +33,16 @@ async function searchOBJ(maxTentativas = 10) {
       if (!resposta.ok) continue;
       const dadoOBJ = await resposta.json();
       if (dadoOBJ && dadoOBJ.primaryImage) {
-        await tratarDados(dadoOBJ);
-        return;
+                await tratarDados(dadoOBJ);
+                showLoading(false);
+                return;
       }
     }
     throw new Error('Não foi possível encontrar imagem em várias tentativas.');
   } catch (erro) {
     console.error('Erro ao consumir o OBJ:', erro);
+        showToast('Erro ao buscar obra', 'error');
+        showLoading(false);
   }
 }
 
@@ -83,10 +87,10 @@ function favoritarOBJ(objectID) {
     let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
     if (!favoritos.includes(objectID)) {
         favoritos.push(objectID);
-        alert('Favoritado!');
+        showToast('Favoritado!', 'success');
     } else {
         favoritos = favoritos.filter(id => id !== objectID);
-        alert('Removido dos favoritos!');
+        showToast('Removido dos favoritos!', 'info');
     }
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
 }
