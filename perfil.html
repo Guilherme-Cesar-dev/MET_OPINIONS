@@ -2,16 +2,71 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="user-name"></h1>
-    <img id="profile-pic" src="" alt="Foto de perfil" width="150">
-    <p id="user-desc"></p>
-    <h2>Favoritos</h2>
-    <ul id="favoritos-list"></ul>
-    <a href="index.html">Voltar</a>
+    <header class="header">
+        <h1>Meu Perfil</h1>
+        <div>
+            <button id="btn-edit-perfil" class="btn-voltar">✏️ Editar Perfil</button>
+            <a href="index.html" class="btn-voltar">← Voltar</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Seção de Visualização do Perfil -->
+        <section class="profile-view">
+            <div class="profile-info">
+                <img id="profile-pic" src="" alt="Foto de perfil" class="profile-pic-large">
+                <div class="profile-text">
+                    <h2 id="user-name"></h2>
+                    <p id="user-desc" class="user-description"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Edição -->
+
+
+
+
+    <!-- Modal de Edição -->
+    <div id="modal-edit" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Editar Perfil</h2>
+            <form id="edit-perfil">
+                <div class="form-group">
+                    <label for="input-nome">Nome</label>
+                    <input type="text" placeholder="Digite seu nome" id="input-nome" maxlength="50" required>
+                    <span class="char-count"><span id="nome-count">0</span>/50</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-desc">Descrição</label>
+                    <textarea placeholder="Conte um pouco sobre você..." id="input-desc" maxlength="200" rows="4"></textarea>
+                    <span class="char-count"><span id="desc-count">0</span>/200</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-foto">URL da Foto</label>
+                    <input type="url" placeholder="https://exemplo.com/foto.jpg" id="input-foto">
+                    <small>Cole o link direto para sua foto</small>
+                </div>
+
+                <button type="submit" class="btn-primary">💾 Salvar Perfil</button>
+            </form>
+        </div>
+    </div>
+        <!-- Seção de Favoritos -->
+        <section class="favoritos-section">
+            <h2>Minhas Obras Favoritas</h2>
+            <ul id="favoritos-list" class="favoritos-list"></ul>
+        </section>
+    </div>
+
     <script src="perfil.js"></script>
 </body>
 </html>

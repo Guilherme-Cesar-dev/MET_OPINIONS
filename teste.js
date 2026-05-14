@@ -64,8 +64,8 @@ async function tratarDados(dadoOBJ) {
 
     // Adiciona HTML dentro do container
     container.innerHTML = `
+    <p id="obj-id">${ultimoObjectID}</p>
     <div id="obj-div">
-        <p id="obj-id">${ultimoObjectID}</p>
         <img id="imagem" src="${dadoOBJ.primaryImage}" alt="${dadoOBJ.title}">
         <p>${dadoOBJ.title}</p>
         <p>${dadoOBJ.description}</p>
@@ -73,15 +73,6 @@ async function tratarDados(dadoOBJ) {
         <p>${dadoOBJ.objectBeginDate}</p>
     </div>
     `;
-
-    const avaliar = document.getElementById('right');
-
-    avaliar.innerHTML = `
-    <div id="avaliar-div" style="background-color: red;">
-        <p>${ultimoObjectID}</p>
-    </div>
-    `;
-
 }
 
 document.getElementById('favoritar').onclick = function() {
@@ -129,7 +120,7 @@ async function tratarkane(kane) {
 
     // Adiciona HTML dentro do container
     container.innerHTML = `
-    <div id="obj-div">
+    <div id="obj-kane">
         <p>${kane.quote}, Kanye West</p>
     </div>
     `;

@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>MET AVALIAR</title>
+    <title>MET Avaliar - Obras de Arte</title>
 </head>
 <body>
-    <h3><a href="perfil.html">Editar perfil</a></h3>
-<form id="edit-perfil">
-    <input type="text" placeholder="Seu nome" id="input-nome"><br>
-    <textarea placeholder="Sua descrição" id="input-desc"></textarea><br>
-    <input type="url" placeholder="Link da foto" id="input-foto"><br>
-    <button type="submit">Salvar</button>
-</form>
+    <header class="header">
+        <h3>THE MET</h3>
+        <h4>Avalie obras de arte!</h4>
+        <a href="perfil.html" class="btn-perfil" id="user-link">Carregando...</a>
+    </header>
 
-    <div id="left"></div>
-    <div id="right"></div>
-    <button id="favoritar">Favoritar</button>
-    <button id="load-more" onclick="searchOBJ()">Proxima Imagem</button>
-    <div id="back"></div>
+    <script>
+        // Exibir nome do usuário no header
+        const user = JSON.parse(localStorage.getItem('user_perfil')) || { nome: 'Meu Perfil' };
+        document.getElementById('user-link').textContent = (user.nome || 'Meu Perfil');
+    </script>
+    <div class="container-main">
+        <div class="gallery">
+            <div id="left" class="artwork-display"></div>
+        </div>
+
+        <div class="actions">
+            <button id="favoritar" class="btn-secondary">Favoritar</button>
+            <button id="load-more" onclick="searchOBJ()" class="btn-primary">Próxima Imagem</button>
+        </div>
+
+        <div id="back" class="quote-section"></div>
+    </div>
+
     <script src="teste.js"></script>
 </body>
 </html>
