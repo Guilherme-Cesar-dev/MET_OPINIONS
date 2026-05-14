@@ -162,3 +162,30 @@
     .toast-success { background: linear-gradient(90deg,#28a745,#198754); }
     .toast-error { background: linear-gradient(90deg,#dc3545,#b02a37); }
     .toast-info { background: linear-gradient(90deg,#667eea,#764ba2); }
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        gap: 8px;
+        text-align: center;
+        padding: 0.75rem;
+    }
+    .header h3 { width: auto; padding-right: 0; }
+    .header h4 { padding-right: 0; font-size: 1rem; }
+
+    #obj-div { margin: 0.5rem; padding: 0.75rem; }
+    #imagem { height: auto; max-width: 100%; width: 100%; }
+
+    .actions { flex-direction: column; gap: 10px; padding: 0 1rem; }
+    #favoritar, #load-more { width: 100%; padding: 0.75rem; }
+
+    #obj-kane { position: relative; padding: 18px; }
+}
+
+@media (max-width: 420px) {
+    .header h3 { font-size: 1rem; }
+    .header h4 { font-size: 0.95rem; }
+    .toast { min-width: 140px; padding: 8px 12px; }
+}

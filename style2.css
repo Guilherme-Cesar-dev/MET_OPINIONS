@@ -272,3 +272,29 @@
     .btn-primary:active {
         transform: translateY(0);
     }
+
+    /* Responsive - Mobile */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            height: auto;
+            gap: 8px;
+            padding: 0.6rem;
+        }
+        .header h3 { width: auto; padding-right: 0; }
+        .profile-view { margin: 1rem; padding: 1rem; }
+        .profile-info { flex-direction: column; gap: 12px; align-items: center; }
+        #profile-pic { width: 120px; height: 120px; }
+        .profile-text { align-items: center; text-align: center; }
+        .favorite-item { flex-direction: column; height: auto; padding: 1rem; }
+        .favorite-item img { width: 100%; height: auto; max-height: 200px; }
+        .favorite-title { width: 100%; }
+        .modal-content { width: 95%; margin: 12% auto; padding: 1.25rem; }
+        .modal-content h2 { font-size: 1.25rem; }
+    }
+
+    @media (max-width: 420px) {
+        .profile-text h2 { font-size: 1.1rem; }
+        .form-group input, .form-group textarea { padding: 0.6rem; }
+        .btn-primary { padding: 0.65rem; }
+    }
