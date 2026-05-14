@@ -12,12 +12,7 @@
         <h4>Avalie obras de arte!</h4>
         <a href="perfil.html" class="btn-perfil" id="user-link">Carregando...</a>
     </header>
-
-    <script>
-        // Exibir nome do usuário no header
-        const user = JSON.parse(localStorage.getItem('user_perfil')) || { nome: 'Meu Perfil' };
-        document.getElementById('user-link').textContent = (user.nome || 'Meu Perfil');
-    </script>
+    
     <div class="container-main">
         <div class="gallery">
             <div id="left" class="artwork-display"></div>
@@ -30,6 +25,12 @@
 
         <div id="back" class="quote-section"></div>
     </div>
+
+    <script>
+        // Exibir nome do usuário no header
+        const user = JSON.parse(localStorage.getItem('user_perfil')) || { nome: 'Meu Perfil' };
+        document.getElementById('user-link').textContent = (user.nome || 'Meu Perfil');
+    </script>
 
     <script src="teste.js"></script>
 </body>

@@ -4,95 +4,117 @@
     box-sizing: border-box;
 }
 
-.header {
-    background-color: #e4002b;
-    padding: 1rem;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 50px;
-}
+/* Home Page */
 
-.header h3 {
-    color: #ffffff;
-    margin: 0;
-    width: 40px;
-    padding-right: 10dvh;
-}
+    /* Header */
 
-.header h3:hover {
-    color: #222222;
-    cursor: pointer;
-}
+    .header {
+        background-color: #e4002b;
+        padding: 1rem;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 70px;
+    }
 
-.header h4 {
-    color: #ffffff;
-    margin: 0;
-    padding-right: 160dvh;
-}
+    .header h3 {
+        color: #ffffff;
+        margin: 0;
+        width: 40px;
+        padding-right: 10dvh;
+    }
 
-.header a {
-    color: #222222;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
+    .header h3:hover {
+        color: #222222;
+        cursor: pointer;
+    }
 
-#obj-div {
-    background-color: #ffffff;
-    padding: 1rem;
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .header h4 {
+        color: #ffffff;
+        margin: 0;
+        padding-right: 170dvh;
+    }
 
-#obj-id {
-    background-color: #222222;
-    width: 100%;
-    height: 20px;
-    color: white;
-    align-items: center;
-    text-align: center;
-}
+    .header a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.2rem;
+    }
 
-#imagem {
-    height: 200px;
-    margin-top: 1rem;
-}
+    .btn-perfil {
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
 
-.actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
+    /* Container de Exibição */
 
-#favoritar {
-    background-color: #e4002b;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
+    #obj-div {
+        background-color: #ffffff;
+        padding: 1rem;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-#load-more {
-    background-color: #222222;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
+    #obj-id {
+        background-color: #222222;
+        width: 100%;
+        height: 20px;
+        color: white;
+        align-items: center;
+        text-align: center;
+    }
 
-#obj-kane {
-    color: white;
-    background-color: #222222;
-    width: 100%;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
-}
+    #imagem {
+        height: 200px;
+        margin-top: 1rem;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    #favoritar {
+        background-color: #e4002b;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+    #load-more {
+        background-color: #222222;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
+
+    /* Rodapé */
+
+    #obj-kane {
+        color: white;
+        background-color: #222222;
+        width: 100%;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+    }
+
+    #obj-kane a {
+        color: #e4002b;
+        text-decoration: none;
+        font-size: 1.2rem;
+    }

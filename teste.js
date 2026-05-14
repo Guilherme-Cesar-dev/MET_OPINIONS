@@ -66,11 +66,11 @@ async function tratarDados(dadoOBJ) {
     container.innerHTML = `
     <p id="obj-id">${ultimoObjectID}</p>
     <div id="obj-div">
+        <p><b>${dadoOBJ.title}</b></p>
         <img id="imagem" src="${dadoOBJ.primaryImage}" alt="${dadoOBJ.title}">
-        <p>${dadoOBJ.title}</p>
-        <p>${dadoOBJ.description}</p>
-        <p>${dadoOBJ.artistDisplayName}</p>
-        <p>${dadoOBJ.objectBeginDate}</p>
+        <p>Description: ${dadoOBJ.description}</p>
+        <p>Artist: ${dadoOBJ.artistDisplayName}</p>
+        <p>Year: ${dadoOBJ.objectBeginDate}</p>
     </div>
     `;
 }
@@ -121,7 +121,8 @@ async function tratarkane(kane) {
     // Adiciona HTML dentro do container
     container.innerHTML = `
     <div id="obj-kane">
-        <p>${kane.quote}, Kanye West</p>
+        <p>${kane.quote}, Kanye West</p><br/>
+        <p><a href="sobre.html">About Us.</a></p>
     </div>
     `;
 

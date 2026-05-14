@@ -68,7 +68,7 @@ document.getElementById('edit-perfil').onsubmit = function(e) {
     Object.assign(user, userData);
     atualizarVisualizacao();
     
-    alert('✅ Perfil salvo com sucesso!');
+    alert('Perfil salvo com sucesso!');
 };
 
 // Lista favoritos
@@ -91,17 +91,18 @@ async function exibirFavoritos(ids) {
 
             const title = obj.title || "Sem título";
             const artist = obj.artistDisplayName && obj.artistDisplayName.trim() ? obj.artistDisplayName : "Artista desconhecido";
-            const desc = obj.description && obj.description.trim() ? obj.description.substring(0, 150) + "..." : "Sem descrição";
+            const desc = obj.description && obj.description.trim() ? obj.description.substring(0, 150) + "..." : "";
             const img = obj.primaryImage && obj.primaryImage.length > 10 ? obj.primaryImage : "";
 
             const li = document.createElement('li');
+            li.className = 'favorite-item';
 
             let content = '';
             if (img) {
-                content += `<img src="${img}" alt="Obra">`;
+                content += `<img class="favorite-image" src="${img}" alt="Obra">`;
             }
             content += `
-                <strong>${title}</strong>
+                <strong class="favorite-title">${title}</strong>
                 <em>${artist}</em>
                 <span>${desc}</span>
                 <a href="https://www.metmuseum.org/art/collection/search/${id}" target="_blank">Ver no MET</a>
