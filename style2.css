@@ -163,13 +163,13 @@
 
     .modal-content {
         background-color: #ffffff;
-        margin: 5% auto;
-        padding: 2rem;
+        margin: 4% auto;
+        padding: 1.25rem;
         border-radius: 10px;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        animation: slideDown 0.3s ease;
+        width: 92%;
+        max-width: 420px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        animation: slideDown 0.25s ease;
     }
 
     @keyframes slideDown {
@@ -278,23 +278,24 @@
         .header {
             flex-direction: column;
             height: auto;
-            gap: 8px;
-            padding: 0.6rem;
+            gap: 6px;
+            padding: 0.5rem;
         }
-        .header h3 { width: auto; padding-right: 0; }
-        .profile-view { margin: 1rem; padding: 1rem; }
-        .profile-info { flex-direction: column; gap: 12px; align-items: center; }
-        #profile-pic { width: 120px; height: 120px; }
+        .header h3 { width: auto; padding-right: 0; font-size: 1rem; }
+        .profile-view { margin: 0.75rem; padding: 0.75rem; }
+        .profile-info { flex-direction: column; gap: 10px; align-items: center; }
+        #profile-pic { width: 110px; height: 110px; }
         .profile-text { align-items: center; text-align: center; }
-        .favorite-item { flex-direction: column; height: auto; padding: 1rem; }
-        .favorite-item img { width: 100%; height: auto; max-height: 200px; }
+        .favorite-item { flex-direction: column; height: auto; padding: 0.75rem; }
+        .favorite-item img { width: 100%; height: auto; max-height: 160px; }
         .favorite-title { width: 100%; }
-        .modal-content { width: 95%; margin: 12% auto; padding: 1.25rem; }
-        .modal-content h2 { font-size: 1.25rem; }
+        .modal-content { width: 92%; margin: 8% auto; padding: 0.9rem; max-width: 400px; }
+        .modal-content h2 { font-size: 1.1rem; margin-bottom: 1rem; }
     }
 
     @media (max-width: 420px) {
-        .profile-text h2 { font-size: 1.1rem; }
-        .form-group input, .form-group textarea { padding: 0.6rem; }
-        .btn-primary { padding: 0.65rem; }
+        .profile-text h2 { font-size: 1rem; }
+        .form-group input, .form-group textarea { padding: 0.5rem; font-size: 0.95rem; }
+        .btn-primary { padding: 0.6rem; font-size: 0.95rem; }
+        .modal-content { padding: 0.7rem; margin: 6% auto; }
     }
