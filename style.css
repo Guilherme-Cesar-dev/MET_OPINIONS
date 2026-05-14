@@ -1,3 +1,9 @@
 #imagem{
     height: 400px;
 }
+
+#favoritos-list img {
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    margin: 6px;
+}

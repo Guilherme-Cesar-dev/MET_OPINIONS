@@ -1,34 +1,45 @@
-async function searchOBJ() {
-    const listUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects`;
+let ultimoObjectID = null;
+
+// Captura o IP e salva no localStorage (uma única vez)
+async function salvarIP() {
+    if (!localStorage.getItem('user_ip')) {
         try {
-            const listaRes = await fetch(listUrl);
-            if (!listaRes.ok) throw new Error(`Erro HTTP: ${listaRes.status}`);
-            const listaDados = await listaRes.json();
-            const ids = listaDados.objectIDs;
-            if (!ids || ids.length === 0) throw new Error('Nenhum objectID disponível');
-
-            const randomIndex = Math.floor(Math.random() * ids.length);
-            const chosenId = ids[randomIndex];
-            const urlOBJ = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${chosenId}`;
-
-            const resposta = await fetch(urlOBJ);
-            if (!resposta.ok) {
-                throw new Error(`Erro HTTP: ${resposta.status}`);
-            }
-            const dadoOBJ = await resposta.json();
-
-            console.log({ chosenId, }); //dadoOBJ });
-
-            if(!dadoOBJ || !dadoOBJ.primaryImage) {
-                console.warn('Objeto sem imagem, buscando outro...');
-                return searchOBJ(); // Tenta novamente se o objeto não tiver imagem
-            }  
-        
-            await tratarDados(dadoOBJ);
-            
-        } catch (erro) {
-            console.error('Erro ao consumir o OBJ:', erro);
+            const ipReq = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipReq.json();
+            localStorage.setItem('user_ip', ipData.ip);
+        } catch (e) {
+            localStorage.setItem('user_ip', 'IP não disponível');
         }
+    }
+}
+
+salvarIP();
+
+async function searchOBJ(maxTentativas = 10) {
+  const listUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects`;
+  try {
+    const listaRes = await fetch(listUrl);
+    if (!listaRes.ok) throw new Error(`Erro HTTP: ${listaRes.status}`);
+    const listaDados = await listaRes.json();
+    const ids = listaDados.objectIDs;
+    if (!ids || ids.length === 0) throw new Error('Nenhum objectID disponível');
+
+    for (let tentativa = 0; tentativa < maxTentativas; tentativa++) {
+      const randomIndex = Math.floor(Math.random() * ids.length);
+      const chosenId = ids[randomIndex];
+      const urlOBJ = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${chosenId}`;
+      const resposta = await fetch(urlOBJ);
+      if (!resposta.ok) continue;
+      const dadoOBJ = await resposta.json();
+      if (dadoOBJ && dadoOBJ.primaryImage) {
+        await tratarDados(dadoOBJ);
+        return;
+      }
+    }
+    throw new Error('Não foi possível encontrar imagem em várias tentativas.');
+  } catch (erro) {
+    console.error('Erro ao consumir o OBJ:', erro);
+  }
 }
 
 async function tratarDados(dadoOBJ) {
@@ -42,18 +53,20 @@ async function tratarDados(dadoOBJ) {
 // data = dadoOBJ.objectBeginDate ; 
 // departamento = dadoOBJ.department ; 
 
+    ultimoObjectID = dadoOBJ.objectID; // ATUALIZA GLOBAL
 
     if(!dadoOBJ.description) dadoOBJ.description = "Sem descrição";
     if(!dadoOBJ.artistDisplayName) dadoOBJ.artistDisplayName = "Não identificado";
 
     // Seleciona o elemento container
     const container = document.getElementById('left');
+   
 
     // Adiciona HTML dentro do container
     container.innerHTML = `
     <div id="obj-div">
-        <p>${dadoOBJ.objectID}</p>
-        <image id="imagem" src="${dadoOBJ.primaryImage}" alt="${dadoOBJ.title}">
+        <p id="obj-id">${ultimoObjectID}</p>
+        <img id="imagem" src="${dadoOBJ.primaryImage}" alt="${dadoOBJ.title}">
         <p>${dadoOBJ.title}</p>
         <p>${dadoOBJ.description}</p>
         <p>${dadoOBJ.artistDisplayName}</p>
@@ -65,15 +78,27 @@ async function tratarDados(dadoOBJ) {
 
     avaliar.innerHTML = `
     <div id="avaliar-div" style="background-color: red;">
-        <p>${dadoOBJ.objectID}</p>
+        <p>${ultimoObjectID}</p>
     </div>
-    <br/>
-    <br/>
-    <br/>
     `;
 
 }
 
+document.getElementById('favoritar').onclick = function() {
+    favoritarOBJ(ultimoObjectID);
+};
+
+function favoritarOBJ(objectID) {
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    if (!favoritos.includes(objectID)) {
+        favoritos.push(objectID);
+        alert('Favoritado!');
+    } else {
+        favoritos = favoritos.filter(id => id !== objectID);
+        alert('Removido dos favoritos!');
+    }
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+}
 
 //  const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${Number}`;
 
@@ -95,7 +120,6 @@ async function kayney() {
         }
 }
 
-
 async function tratarkane(kane) {
     console.log({ quote: kane.quote });
 
@@ -112,4 +136,5 @@ async function tratarkane(kane) {
 
 }
 
+searchOBJ();
 kayney();

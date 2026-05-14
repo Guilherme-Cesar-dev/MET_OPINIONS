@@ -7,9 +7,17 @@
     <title>MET AVALIAR</title>
 </head>
 <body>
+    <h3><a href="perfil.html">Editar perfil</a></h3>
+<form id="edit-perfil">
+    <input type="text" placeholder="Seu nome" id="input-nome"><br>
+    <textarea placeholder="Sua descrição" id="input-desc"></textarea><br>
+    <input type="url" placeholder="Link da foto" id="input-foto"><br>
+    <button type="submit">Salvar</button>
+</form>
+
     <div id="left"></div>
     <div id="right"></div>
-    <button id="favoritar" onclick="junior()">Favoritar</button>
+    <button id="favoritar">Favoritar</button>
     <button id="load-more" onclick="searchOBJ()">Proxima Imagem</button>
     <div id="back"></div>
     <script src="teste.js"></script>
